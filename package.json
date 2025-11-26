@@ -1,0 +1,13 @@
+{
+  "name": "exam-ci-test",
+  "version": "1.0.0",
+  "description": "Test pipeline for CI/CD",
+  "scripts": {
+    "test:unit": "echo 'Running unit tests...' && exit 0",
+    "test:integration": "echo 'Running integration tests...' && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {}
+}
