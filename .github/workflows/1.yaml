@@ -43,7 +43,7 @@ jobs:
       - name: Notify on test failure
         if: failure()
         run: |
-          echo "❌ Unit tests failed!"
+          echo "Unit tests failed!"
           echo "Job: ${{ github.job }}"
           echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
