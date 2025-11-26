@@ -31,6 +31,21 @@ jobs:
           name: coverage-unit
           path: coverage/unit/
           retention-days: 30
+      - name: Archive test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-reports
+          path: |
+            coverage/unit/
+            test-results/
+          retention-days: 90
+      - name: Notify on test failure
+        if: failure()
+        run: |
+          echo "❌ Unit tests failed!"
+          echo "Job: ${{ github.job }}"
+          echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
   integration_tests:
     name: Integration Tests
@@ -74,6 +89,21 @@ jobs:
           name: coverage-integration
           path: coverage/integration/
           retention-days: 30
+      - name: Archive test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-reports
+          path: |
+            coverage/integration/
+            test-results/
+          retention-days: 90
+      - name: Notify on test failure
+        if: failure()
+        run: |
+          echo "❌ Integration tests failed!"
+          echo "Job: ${{ github.job }}"
+          echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
   # `test_report` job removed — reports are not aggregated in a separate job anymore.
 
